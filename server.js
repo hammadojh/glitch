@@ -1,6 +1,7 @@
 /**
  * This is the main Node.js server script for your project
  * Check out the two endpoints this back-end API provides in fastify.get and fastify.post below
+ * Omar Hammad
  */
 
 const path = require("path");
@@ -42,7 +43,9 @@ if (seo.url === "glitch-default") {
  */
 fastify.get("/", function (request, reply) {
   // params is an object we'll pass to our handlebars template
-  let params = { seo: seo };
+  let params = {
+    seo: seo
+  };
 
   // If someone clicked the option for a random color it'll be passed in the querystring
   if (request.query.randomize) {
@@ -70,7 +73,9 @@ fastify.get("/", function (request, reply) {
  */
 fastify.post("/", function (request, reply) {
   // Build the params object to pass to the template
-  let params = { seo: seo };
+  let params = {
+    seo: seo
+  };
 
   // If the user submitted a color through the form it'll be passed here in the request body
   let color = request.body.color;
@@ -107,8 +112,10 @@ fastify.post("/", function (request, reply) {
 });
 
 // Run the server and report out to the logs
-fastify.listen(
-  { port: process.env.PORT, host: "0.0.0.0" },
+fastify.listen({
+    port: process.env.PORT,
+    host: "0.0.0.0"
+  },
   function (err, address) {
     if (err) {
       console.error(err);
